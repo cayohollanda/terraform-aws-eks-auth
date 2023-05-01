@@ -108,6 +108,11 @@ You can just create a fork and then, create a Pull Request to main repository.
 
 Yes! I appreciate you if you can do this and alert me. I will solve it as soon as possible. 
 
+## License
+
+[GPL-3.0](https://github.com/cayohollanda/terraform-aws-eks-auth/blob/main/LICENSE)
+
+
 ## Authors and Contributors
 
 - [@cayohollanda](https://www.github.com/cayohollanda)
