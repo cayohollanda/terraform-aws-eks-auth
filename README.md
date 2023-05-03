@@ -1,12 +1,20 @@
 
 # eks-aws-auth
-This is a Terraform Module that updates the aws-auth configmap that are created in the EKS creation workflow.
+This Terraform Module updates the aws-auth configmap created during the EKS creation workflow.
 
+
+## Prerequisites
+
+Before using this module, ensure that you have met the following prerequisites:
+
+1. Install [Terraform](https://www.terraform.io/downloads.html)
+2. Configure your [AWS CLI](https://aws.amazon.com/cli/) with the appropriate AWS account credentials.
+3. Have an existing EKS cluster or use a Terraform module to create one.
 
 
 ## How Use
 
-To use the module you just need to add in your .tf file the module declaration with the required variables like:
+To use this module, simply add the module declaration with the required variables to your .tf file:
 
 ```terraform
 # main.tf
@@ -22,7 +30,7 @@ module "eks-auth" {
 }
 ```
 
-In your variables.tf you just need to add these variables:
+In your variables.tf file, add the following variables:
 ```terraform
 # variables.tf
 variable "mapRoles" {
@@ -50,7 +58,7 @@ variable "k8s_token" {
 }
 ```
 
-And declare the variables in your terraform.tfvars like this:
+Declare the variables in your terraform.tfvars file as follows:
 ```terraform
 # terraform.tfvars
 mapRoles                   = []
@@ -59,7 +67,7 @@ k8s_cluster_ca_certificate = "YOUR-CLUSTER-CA-CERTIFICATE"
 k8s_token                  = "YOUR-CLUSTER-TOKEN"
 ```
 
-Please, pay attention on mapRoles filling, you NEED to add the nodes role (default role of aws-auth) and then, you can add other object with your custom role
+Please pay attention to the mapRoles configuration. You NEED to add the nodes role (default role of aws-auth) and then you can add other objects with your custom roles:
 ```terraform
 # terraform.tfvars
 mapRoles = [
@@ -76,7 +84,7 @@ mapRoles = [
 ]
 ```
 
-I suggest you to fill the module variables in the EKS creation moment and re-use the Kubernetes output variables like this:
+We suggest filling the module variables during EKS creation and reusing the Kubernetes output variables like this:
 ```terraform
 # main.tf
 module "eks-auth" {
@@ -91,7 +99,7 @@ module "eks-auth" {
 }
 ```
 
-Example of how can you get the k8s_token:
+Here's an example of how to obtain the k8s_token:
 ```terraform
 # data.tf
 data "aws_eks_cluster_auth" "this" {
@@ -100,13 +108,13 @@ data "aws_eks_cluster_auth" "this" {
 ```
 ## FAQ
 
-### How can I contribute with this module?
+### How can I contribute to this module?
 
-You can just create a fork and then, create a Pull Request to main repository.
+Simply create a fork and then submit a Pull Request to the main repository.
 
-### Can I relates a bug?
+### Can I report a bug?
 
-Yes! I appreciate you if you can do this and alert me. I will solve it as soon as possible. 
+Yes! We appreciate your help in identifying any issues. We will address them as soon as possible.
 
 ## License
 
